@@ -1,0 +1,82 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header:hover {
+            background-color: #555; /* Change color on hover */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .text-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .carousel {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to our Razor Landing Page</h1>
+    </header>
+
+    <div class="container">
+        <div class="text-container">
+            <h2>@Model.Title</h2>
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="carousel">
+            <img src="@Model.ImageUrl" alt="Image 1">
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+</body>
+</html>
