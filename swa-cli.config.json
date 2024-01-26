@@ -1,5 +1,5 @@
 {
-  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "$schema": "https://mrmichaelque.github.io/Webfolio/",
   "configurations": {
     "codespaces-project-template-dotnet": {
       "appLocation": "src/BlazorApp",
