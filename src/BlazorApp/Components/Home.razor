@@ -1,39 +1,40 @@
-<section class="dark" id="home">
-    @if (hero is not null)
-    {
-        <img class="background" src="@(hero.Src)" alt="@(hero.Alt)" />
-    }
-    <div style="position: absolute; top: 30%; left: 2rem;">
-    @if (property is null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
-    {
-        <h1>@property.Name</h1>
-        <h2>@property.Title</h2>
-    }
+ <section class="light" id="about">
+        @if (hero is not null)
+        {
+            <img class="background" src="@(hero.Src)" alt="@(hero.Alt)" />
+        }
+        <h2>About Myself</h2>
+        <div style="background-color: white; width: 50%; padding: 4rem; margin: 3rem auto; text-align: center;">
+            @if (aboutMe is null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
+                <p class="large">@aboutMe.Description</p>
+                <hr />
+                <ul style="text-align: left; columns: 2; font-size: 1.25rem; margin: 2rem 3rem; gap: 3rem;">
+                    @foreach (var skill in aboutMe.Skills)
+                    {
+                        <li key="@skill">@skill</li>
+                    }
+                </ul>
+                <hr />
+                <p style="padding: 1rem 3rem 0;">@aboutMe.DetailOrQuote</p>
+            }
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="text-container">
+            <h2>@Model.Title</h2>
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="carousel">
+            <img src="@Model.ImageUrl" alt="Image 1">
+            <!-- Add more images as needed -->
+        </div>
     </div>
-    <div style="position: absolute; bottom: 8rem; left: 50%;">
-        <a href="#about" target="_top">
-            <img src="images/down-arrow.svg" style="height: 3rem; width: 3rem;" alt="scroll down" />
-        </a>
-    </div>
-</section>
-
-@code {
-    [Parameter, EditorRequired]
-    public required HttpClient Http { get; set; }
-
-    [Parameter, EditorRequired]
-    public required HeroImageService HeroImageService { get; set; }
-
-    private SiteProperties? property;
-    private HeroImage? hero;
-
-    protected override async Task OnInitializedAsync()
-    {
-        property = await Http.GetFromJsonAsync<SiteProperties>("sample-data/siteproperties.json");
-        hero = await HeroImageService.GetHeroAsync(img => img.Name is "home");
-    }
-}
+</body>
+</html>
